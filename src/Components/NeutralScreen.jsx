@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { AiOutlineRise, AiOutlineFall } from "react-icons/ai";
 import { BsArrowUpRight, BsArrowDownLeft } from "react-icons/bs";
 
 const NeutralScreen = () => {
