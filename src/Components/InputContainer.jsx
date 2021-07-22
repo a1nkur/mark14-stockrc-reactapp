@@ -5,6 +5,7 @@ const InputContainer = ({
   handleOnChange,
   setLoss,
   setProfit,
+  setIsNeutral,
 }) => {
   const handleOnsubmit = e => {
     e.preventDefault();
@@ -20,12 +21,28 @@ const InputContainer = ({
         profitValue: ((CP - PP) * QTY).toFixed(2),
         profitPercentage: (((CP - PP) / PP) * 100).toFixed(2),
       });
+
+      setLoss({
+        isAtLoss: false,
+        lossValue: "",
+        lossPercentage: "",
+      });
+
+      setIsNeutral(false);
     } else if (CP - PP < 0) {
       setLoss({
         isAtLoss: true,
         lossValue: ((CP - PP) * QTY).toFixed(2),
         lossPercentage: (((CP - PP) / PP) * 100).toFixed(2),
       });
+
+      setProfit({
+        isAtProfit: false,
+        profitValue: "",
+        profitPercentage: "",
+      });
+
+      setIsNeutral(false);
     } else {
       alert("");
     }
@@ -75,7 +92,7 @@ const InputContainer = ({
               Current Price
             </label>
           </FormControl>
-          <button type="submit">check now</button>
+          <button type="submit">Check Now</button>
         </form>
       </FormContainer>
     </Container>
@@ -92,6 +109,13 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   background-color: #fff;
+
+  /* Phone Screen */
+  @media (max-width: 480px) {
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+  }
 `;
 
 const FormContainer = styled.div`
@@ -114,7 +138,6 @@ const FormContainer = styled.div`
 `;
 
 const FormControl = styled.div`
-  /* border: 1px solid red; */
   width: 30vw;
   padding: 0rem 0rem 1.5rem 0rem;
   display: flex;

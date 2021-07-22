@@ -24,7 +24,9 @@ body {
 }
 
 body {
-  background-color: #f0e9e9;
+  /* background-color: #f0e9e9; */
+  /* background-color: #1b1b1b; */
+  background-color: #333232;
   height: 100vh;
   display: flex;
   align-items: center;
