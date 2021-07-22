@@ -1,10 +1,16 @@
 import styled from "styled-components";
 import { BsArrowUpRight, BsArrowDownLeft } from "react-icons/bs";
 
+import { motion } from "framer-motion";
+
 const NeutralScreen = () => {
   return (
     <Container>
-      <IntroText>
+      <IntroText
+        initial={{ y: 700 }}
+        animate={{ y: 0 }}
+        transition={{ delay: 0.5, duration: 1 }}
+      >
         <h1 className="first">Check Your Stock's</h1>
         <h1>
           <span className="intro-profit">
@@ -22,6 +28,7 @@ const NeutralScreen = () => {
   );
 };
 
+// x: "100vw",
 export default NeutralScreen;
 
 /* ---------------------------- Styled Components --------------------------- */
@@ -34,6 +41,15 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   height: 100%;
+
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+
+  &::-webkit-scrollbar { /* WebKit */
+    width: 0;
+    height: 0;
+  }
 
   @media (max-width: 1510px) {
     font-size: 2.3rem;
@@ -48,7 +64,7 @@ const Container = styled.div`
   }
 `;
 
-const IntroText = styled.div`
+const IntroText = styled(motion.div)`
   span {
     display: flex;
     align-items: center;

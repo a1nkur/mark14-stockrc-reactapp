@@ -1,12 +1,18 @@
 import styled from "styled-components";
 
 import { FiTrendingDown } from "react-icons/fi";
+import { motion } from "framer-motion";
 
 const LossScreen = ({ loss }) => {
   // const lossPercentage = Number(loss.lossPercentage);
 
   return (
-    <Container loss={loss}>
+    <Container
+      loss={loss}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.5, duration: 1.5, type: "spring" }}
+    >
       <TextInfo>
         <div className="part__one">
           <h1>
@@ -27,7 +33,7 @@ export default LossScreen;
 
 /* ---------------------------- Styled Components --------------------------- */
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   padding: 5rem 4rem;
   color: ${props =>
     Math.abs(Number(props.loss.lossPercentage)) > 50 ? `#000` : `#c70039`};

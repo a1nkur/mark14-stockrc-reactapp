@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 const InputContainer = ({
   enteredData,
@@ -50,7 +51,11 @@ const InputContainer = ({
 
   return (
     <Container>
-      <FormContainer>
+      <FormContainer
+        initial={{ y: -700 }}
+        animate={{ y: 0 }}
+        transition={{ delay: 0.5, duration: 1 }}
+      >
         <form onSubmit={handleOnsubmit}>
           <FormControl>
             <input
@@ -118,7 +123,7 @@ const Container = styled.div`
   }
 `;
 
-const FormContainer = styled.div`
+const FormContainer = styled(motion.div)`
   padding-left: 1rem;
 
   button {
@@ -126,7 +131,7 @@ const FormContainer = styled.div`
     width: 40%;
     cursor: pointer;
     border-radius: 3px;
-    background: #fff;
+    background: transparent;
     border: 1px solid rgb(108, 99, 255);
     transition: all 0.3s ease;
     font-weight: bold;
@@ -159,6 +164,7 @@ const FormControl = styled.div`
     width: 70%;
     border: none;
     border-bottom: 1px solid rgb(108, 99, 255);
+    background-color: transparent;
 
     &:focus {
       border: none;
