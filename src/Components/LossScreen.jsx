@@ -62,4 +62,30 @@ const TextInfo = styled.div`
       width: 100%;
     }
   }
+
+  /* ---------- Media Query For Responsive SVG And Profit % Placement --------- */
+  @media (max-width: 1200px) {
+    .part__one {
+      h1 {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  }
+  /* ---------- Media Query For Responsive SVG And Profit % Placement --------- */
+
+  /* --------------------- Media Query For Resposnive Text -------------------- */
+  @media (max-width: 1510px) {
+    font-size: 2.3rem;
+  }
+
+  @media (max-width: 1410px) {
+    font-size: 2rem;
+  }
+
+  /* @media (max-width: 1253px) {
+    font-size: 1rem;
+  } */
+
+  /* --------------------- Media Query For Resposnive Text -------------------- */
 `;

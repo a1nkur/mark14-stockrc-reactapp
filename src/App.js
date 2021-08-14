@@ -39,10 +39,8 @@ function App() {
     });
   };
 
-  //!
-
   return (
-    <div className="App">
+    <AppContainer>
       <AppBody>
         <InputContainer
           enteredData={enteredData}
@@ -57,7 +55,7 @@ function App() {
           {profit.isAtProfit && <ProfitScreen profit={profit} />}
         </OutputScreen>
       </AppBody>
-    </div>
+    </AppContainer>
   );
 }
 
@@ -65,11 +63,25 @@ export default App;
 
 /* ---------------------------- Styled Components --------------------------- */
 
+const AppContainer = styled.div`
+  background-color: #333232;
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const AppBody = styled.div`
   height: 90vh;
   width: 90vw;
-  border: 0.1rem solid #000;
-  border-radius: 3px;
+  max-width: 96%;
+  border-radius: 5px;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   display: flex;
+
+  /* ---------------------------- Phone Responsive ---------------------------- */
+
+  /* ---------------------------- Phone Responsive ---------------------------- */
 `;

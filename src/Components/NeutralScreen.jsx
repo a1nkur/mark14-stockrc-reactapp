@@ -28,12 +28,13 @@ const NeutralScreen = () => {
   );
 };
 
-// x: "100vw",
 export default NeutralScreen;
 
 /* ---------------------------- Styled Components --------------------------- */
 
 const Container = styled.div`
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
   padding: 0rem 4rem;
   color: #fff;
   background-color: #000;
@@ -41,16 +42,25 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   height: 100%;
+  width: 100%;
 
+  /* ----------------------- Permanently Remove Scrollbar ---------------------- */
   overflow-y: scroll;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
 
-  &::-webkit-scrollbar { /* WebKit */
+  &::-webkit-scrollbar {
+    /* WebKit */
     width: 0;
     height: 0;
   }
+  /* ----------------------- Permanently Remove Scrollbar ---------------------- */
 
+  /* ---------------------------- Phone Responsive ---------------------------- */
+
+  /* ---------------------------- Phone Responsive ---------------------------- */
+
+  /* --------------------- Media Query For Resposnive Text -------------------- */
   @media (max-width: 1510px) {
     font-size: 2.3rem;
   }
@@ -62,6 +72,7 @@ const Container = styled.div`
   @media (max-width: 1253px) {
     font-size: 1.5rem;
   }
+  /* --------------------- Media Query For Resposnive Text -------------------- */
 `;
 
 const IntroText = styled(motion.div)`
@@ -87,6 +98,5 @@ const IntroText = styled(motion.div)`
 
   .white {
     color: #fff;
-    /* font-size: 1rem; */
   }
 `;
