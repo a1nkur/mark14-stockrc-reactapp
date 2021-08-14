@@ -65,6 +65,7 @@ export default App;
 
 const AppContainer = styled.div`
   background-color: #333232;
+  background-color: hsl(226, 94%, 94%);
   height: 100vh;
   width: 100vw;
 

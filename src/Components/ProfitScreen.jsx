@@ -57,6 +57,8 @@ const TextInfo = styled.div`
       width: 100%;
     }
   }
+
+
   /* ---------- Media Query For Responsive SVG And Profit % Placement --------- */
   @media (max-width: 1200px) {
     .part__one {
