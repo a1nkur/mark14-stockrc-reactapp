@@ -15,7 +15,6 @@ const InputContainer = ({
 
     window.scrollTo({
       top: -100,
-      // left: 0,
       behavior: "smooth",
     });
 
@@ -76,11 +75,8 @@ const InputContainer = ({
               onChange={handleOnChange}
               placeholder="Purchase Price"
               variants={lineAnimation}
-              // initial="hidden"
-              // animate="show"
               required
             />
-            {/* <label htmlFor="purchasePrice">Purchase Price</label> */}
           </FormControl>
           <FormControl>
             <motion.input
@@ -95,7 +91,6 @@ const InputContainer = ({
               placeholder="Current Price"
               required
             />
-            {/* <label htmlFor="currentPrice" className="third-label"> Current Price</label> */}
           </FormControl>
           <FormControl>
             <motion.input
@@ -109,7 +104,6 @@ const InputContainer = ({
               variants={lineAnimation}
               required
             />
-            {/* <label htmlFor="stockQuantity">Stock Quantity</label> */}
           </FormControl>
           <motion.button type="submit" variants={fade}>
             Check Now

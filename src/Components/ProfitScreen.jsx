@@ -9,12 +9,6 @@ const ProfitScreen = ({ profit }) => {
   return (
     <Container variants={OutputScreenAnimate} initial="hidden" animate="show">
       <TextInfo>
-        {/* <div className="part__one">
-          <h1>
-            <FiTrendingUp />
-            <span>+{profit.profitPercentage}%</span>
-          </h1>
-        </div> */}
         <div className="part__one">
           <motion.span variants={fade}>
             <FiTrendingUp size="2x" />
@@ -41,13 +35,14 @@ const ProfitScreen = ({ profit }) => {
 export default ProfitScreen;
 
 /* ---------------------------- Styled Components --------------------------- */
-
 const Container = styled(motion.div)`
   padding: 5rem 4rem;
   color: #000;
   background-color: #16f5aa;
   display: flex;
   align-items: center;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
   height: 100%;
 
   /* ------------------------------- MEDIA QUERY ------------------------------ */
@@ -120,7 +115,7 @@ const TextInfo = styled.div`
       text-align: center;
     }
   }
-  /* ---------- Media Query For Responsive SVG And Profit % Placement --------- */
+  /* ---------- Media Query For Responsive SVG And Profit % Placement END --------- */
 
   /* --------------------- Media Query For Resposnive Text -------------------- */
   @media (max-width: 1510px) {
@@ -131,7 +126,7 @@ const TextInfo = styled.div`
     font-size: 2rem;
   }
 
-  /* --------------------- Media Query For Resposnive Text -------------------- */
+  /* --------------------- Media Query For Resposnive Text END-------------------- */
 `;
 
 const Hide = styled(motion.div)`

@@ -58,6 +58,8 @@ const Container = styled(motion.div)`
   display: flex;
   align-items: center;
   height: 100%;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 
   /* ------------------------------- MEDIA QUERY ------------------------------ */
   @media (max-width: 520px) {
@@ -126,7 +128,6 @@ const TextInfo = styled.div`
   /* ---------- Media Query For Responsive SVG And Profit % Placement --------- */
   @media (max-width: 520px) {
     .part__one {
-
       display: flex;
       flex-direction: column;
 
