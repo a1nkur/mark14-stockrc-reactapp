@@ -2,27 +2,34 @@ import styled from "styled-components";
 import { BsArrowUpRight, BsArrowDownLeft } from "react-icons/bs";
 
 import { motion } from "framer-motion";
+import { genericAnimate, titleAnimate } from "../animate";
 
 const NeutralScreen = () => {
   return (
     <Container>
-      <IntroText
-        initial={{ y: 700 }}
-        animate={{ y: 0 }}
-        transition={{ delay: 0.5, duration: 1 }}
-      >
-        <h1 className="first">Check Your Stock's</h1>
-        <h1>
-          <span className="intro-profit">
-            Profit <BsArrowUpRight />
-          </span>
-        </h1>
-        <h3>or,</h3>
-        <h1>
-          <span className="intro-loss">
-            loss <BsArrowDownLeft />
-          </span>
-        </h1>
+      <IntroText variants={genericAnimate} initial="hidden" animate="show">
+        <Hide>
+          <motion.h1 className="first" variants={titleAnimate}>
+            Check Your Stock's
+          </motion.h1>
+        </Hide>
+        <Hide>
+          <motion.h1 variants={titleAnimate}>
+            <span className="intro-profit">
+              Profit <BsArrowUpRight />
+            </span>
+          </motion.h1>
+        </Hide>
+        <Hide>
+          <motion.h3 variants={titleAnimate}>or,</motion.h3>
+        </Hide>
+        <Hide>
+          <motion.h1 variants={titleAnimate}>
+            <span className="intro-loss">
+              loss <BsArrowDownLeft />
+            </span>
+          </motion.h1>
+        </Hide>
       </IntroText>
     </Container>
   );
@@ -58,6 +65,12 @@ const Container = styled.div`
 
   /* ---------------------------- Phone Responsive ---------------------------- */
 
+  @media (max-width: 520px) {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    width: 100vw;
+  }
+
   /* ---------------------------- Phone Responsive ---------------------------- */
 
   /* --------------------- Media Query For Resposnive Text -------------------- */
@@ -70,9 +83,13 @@ const Container = styled.div`
   }
 
   @media (max-width: 1253px) {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
   /* --------------------- Media Query For Resposnive Text -------------------- */
+`;
+
+const Hide = styled.div`
+  overflow: hidden;
 `;
 
 const IntroText = styled(motion.div)`

@@ -3,23 +3,35 @@ import styled from "styled-components";
 import { FiTrendingUp } from "react-icons/fi";
 import { motion } from "framer-motion";
 
+import { OutputScreenAnimate, titleAnimate, fade } from "../animate";
+
 const ProfitScreen = ({ profit }) => {
   return (
-    <Container
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 0.5, duration: 1.5, type: "spring" }}
-    >
+    <Container variants={OutputScreenAnimate} initial="hidden" animate="show">
       <TextInfo>
-        <div className="part__one">
+        {/* <div className="part__one">
           <h1>
             <FiTrendingUp />
             <span>+{profit.profitPercentage}%</span>
           </h1>
+        </div> */}
+        <div className="part__one">
+          <motion.span variants={fade}>
+            <FiTrendingUp size="2x" />
+          </motion.span>
+          <Hide>
+            <motion.h1 variants={titleAnimate}>
+              +{profit.profitPercentage}%
+            </motion.h1>
+          </Hide>
         </div>
         <div className="part__two">
           <h5>You gained </h5>
-          <h1> ₹{Math.abs(profit.profitValue)} 😁</h1>
+          <Hide>
+            <motion.h1 variants={titleAnimate}>
+              ₹{Math.abs(profit.profitValue)} 😁
+            </motion.h1>
+          </Hide>
         </div>
       </TextInfo>
     </Container>
@@ -37,6 +49,12 @@ const Container = styled(motion.div)`
   display: flex;
   align-items: center;
   height: 100%;
+
+  /* ------------------------------- MEDIA QUERY ------------------------------ */
+  @media (max-width: 520px) {
+    width: 100vw;
+  }
+  /* ------------------------------- MEDIA QUERY END ------------------------------ */
 `;
 
 const TextInfo = styled.div`
@@ -50,22 +68,56 @@ const TextInfo = styled.div`
   .part__one {
     width: 100%;
 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
     h1 {
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
+      font-size: 4rem;
+    }
+
+    span {
+      font-size: 2rem;
+    }
+
+    SVG {
+      color: #000;
+      animation: color-change 1s infinite;
+      @keyframes color-change {
+        0% {
+          opacity: 0;
+        }
+        50% {
+          color: #212121;
+        }
+        100% {
+          color: #000;
+          opacity: 1;
+        }
+      }
     }
   }
 
-
   /* ---------- Media Query For Responsive SVG And Profit % Placement --------- */
-  @media (max-width: 1200px) {
+  @media (max-width: 520px) {
     .part__one {
-      h1 {
-        flex-direction: column;
-        align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+
+      span {
+        height: 8rem;
       }
+    }
+
+    .part__two {
+      h5 {
+        padding-bottom: 0.5rem;
+      }
+      text-align: center;
     }
   }
   /* ---------- Media Query For Responsive SVG And Profit % Placement --------- */
@@ -79,9 +131,9 @@ const TextInfo = styled.div`
     font-size: 2rem;
   }
 
-  /* @media (max-width: 1253px) {
-    font-size: 1rem;
-  } */
-
   /* --------------------- Media Query For Resposnive Text -------------------- */
+`;
+
+const Hide = styled(motion.div)`
+  overflow: hidden;
 `;

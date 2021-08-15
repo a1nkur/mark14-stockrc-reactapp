@@ -64,7 +64,6 @@ export default App;
 /* ---------------------------- Styled Components --------------------------- */
 
 const AppContainer = styled.div`
-  background-color: #333232;
   background-color: hsl(226, 94%, 94%);
   height: 100vh;
   width: 100vw;
@@ -72,6 +71,17 @@ const AppContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  /* ------------------------------- MEDIA QUERY ------------------------------ */
+
+  /* SMARTPHONE */
+  @media (max-width: 520px) {
+    display: block;
+    height: auto;
+    width: auto;
+  }
+
+  /* ----------------------------- MEDIA QUERY END ---------------------------- */
 `;
 
 const AppBody = styled.div`
@@ -80,9 +90,12 @@ const AppBody = styled.div`
   max-width: 96%;
   border-radius: 5px;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+
   display: flex;
 
-  /* ---------------------------- Phone Responsive ---------------------------- */
-
-  /* ---------------------------- Phone Responsive ---------------------------- */
+  /* ------------------------------- MEDIA QUERY ------------------------------ */
+  /* SMARTPHONE */
+  @media (max-width: 520px) {
+    display: table;
+  }
 `;

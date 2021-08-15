@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { genericAnimate, lineAnimation, fade } from "../animate";
 
 const InputContainer = ({
   enteredData,
@@ -12,6 +13,12 @@ const InputContainer = ({
   const handleOnsubmit = e => {
     e.preventDefault();
 
+    window.scrollTo({
+      top: -100,
+      // left: 0,
+      behavior: "smooth",
+    });
+
     // CP = CURRENT PRICE
     // PP = PURCHASE PRICE
     // QTY = QUANTITY
@@ -20,7 +27,7 @@ const InputContainer = ({
     const PP = Number(enteredData.purchasePrice);
     const QTY = Number(enteredData.stockQuantity);
 
-    // Processing
+    //* Processing
     if (CP - PP > 0) {
       setProfit({
         isAtProfit: true,
@@ -56,14 +63,10 @@ const InputContainer = ({
 
   return (
     <Container>
-      <FormContainer
-        initial={{ y: -700 }}
-        animate={{ y: 0 }}
-        transition={{ delay: 0.5, duration: 1 }}
-      >
+      <FormContainer variants={genericAnimate} initial="hidden" animate="show">
         <form onSubmit={handleOnsubmit}>
           <FormControl>
-            <input
+            <motion.input
               type="number"
               name="purchasePrice"
               id="purchasePrice"
@@ -71,12 +74,16 @@ const InputContainer = ({
               min={1}
               step={0.1}
               onChange={handleOnChange}
+              placeholder="Purchase Price"
+              variants={lineAnimation}
+              // initial="hidden"
+              // animate="show"
               required
             />
-            <label htmlFor="purchasePrice">Purchase Price</label>
+            {/* <label htmlFor="purchasePrice">Purchase Price</label> */}
           </FormControl>
           <FormControl>
-            <input
+            <motion.input
               type="number"
               name="currentPrice"
               id="currentPrice"
@@ -84,26 +91,29 @@ const InputContainer = ({
               step={0.1}
               value={enteredData.currentPrice}
               onChange={handleOnChange}
+              variants={lineAnimation}
+              placeholder="Current Price"
               required
             />
-            <label htmlFor="currentPrice" className="third-label">
-              Current Price
-            </label>
+            {/* <label htmlFor="currentPrice" className="third-label"> Current Price</label> */}
           </FormControl>
           <FormControl>
-            <input
+            <motion.input
               type="number"
               name="stockQuantity"
               id="stockQuantity"
               value={enteredData.stockQuantity}
               min={1}
               onChange={handleOnChange}
+              placeholder="Stock Quantity"
+              variants={lineAnimation}
               required
             />
-            <label htmlFor="stockQuantity">Stock Quantity</label>
+            {/* <label htmlFor="stockQuantity">Stock Quantity</label> */}
           </FormControl>
-
-          <button type="submit">Check Now</button>
+          <motion.button type="submit" variants={fade}>
+            Check Now
+          </motion.button>
         </form>
       </FormContainer>
     </Container>
@@ -115,29 +125,32 @@ export default InputContainer;
 /* ---------------------------- Styled Components --------------------------- */
 
 const Container = styled.div`
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-
-  flex: 0.4 0 36vw;
+  order: 1;
+  flex: 0.4 1 36vw;
   padding: 5rem 1rem;
   display: flex;
   align-items: center;
   background-color: #fff;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+
+  /* ---------------------------- MEDIA QUERY ---------------------------- */
 
   /* Phone Screen */
-  @media (max-width: 480px) {
+  @media (max-width: 520px) {
     height: 100vh;
     width: 100vw;
     flex-direction: column;
+
+    justify-content: center;
   }
 
-  /* ---------------------------- Phone Responsive ---------------------------- */
-
-  /* ---------------------------- Phone Responsive ---------------------------- */
+  /* ---------------------------- MEDIA QUERY ---------------------------- */
 `;
 
 const FormContainer = styled(motion.div)`
-  padding-left: 1rem;
+  width: 100%;
+  padding: 0 1.5rem;
 
   button {
     padding: 0.7rem 0.5rem;
@@ -157,7 +170,15 @@ const FormContainer = styled(motion.div)`
   /* ----------------- Media Query for Responsive button ---------------- */
   @media (max-width: 1200px) {
     button {
-      width: 60%;
+      width: 70%;
+    }
+  }
+
+  @media (max-width: 520px) {
+    button {
+      max-width: 96%;
+      margin: auto;
+      margin-left: 3rem;
     }
   }
 
@@ -165,28 +186,16 @@ const FormContainer = styled(motion.div)`
 `;
 
 const FormControl = styled.div`
-  width: 31vw;
+  width: 100%;
   padding: 0rem 0rem 1.5rem 0rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  label {
-    font-size: 1.2rem;
-  }
-
-  .third-label {
-    margin-right: 0.9rem;
-  }
 
   input {
-    border: 1px solid red;
     font-size: 2rem;
     color: rgb(108, 99, 255);
     padding: 0.7rem 0.5rem;
-    width: 70%;
+    width: 100%;
     border: none;
-    border-bottom: 1px solid rgb(108, 99, 255);
+    border-bottom: 2px dotted rgb(108, 99, 255);
     background-color: transparent;
     &:focus {
       border: none;
@@ -196,17 +205,21 @@ const FormControl = styled.div`
   }
 
   /* ----------------- Media Query for Responsive Input Fields ---------------- */
-  @media (max-width: 1200px) {
+  /* @media (max-width: 1200px) {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
+
+  } */
+
+  @media (max-width: 520px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 
     input {
-      order: 2;
-    }
-
-    label {
-      order: 1;
-      font-size: 1rem;
+      font-size: 1.3rem;
+      text-align: center;
     }
   }
 
