@@ -33,7 +33,7 @@ const LossScreen = ({ loss }) => {
           </Hide>
         </div>
         <div className="part__two">
-          <h5>You gained </h5>
+          <h5>You lost </h5>
           <Hide>
             <motion.h1 variants={titleAnimate}>
               ₹{Math.abs(loss.lossValue)} 😔
