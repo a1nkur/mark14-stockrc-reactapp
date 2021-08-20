@@ -1,4 +1,6 @@
 import styled from "styled-components";
+
+// Framer motion
 import { motion } from "framer-motion";
 import { genericAnimate, lineAnimation, fade } from "../animate";
 

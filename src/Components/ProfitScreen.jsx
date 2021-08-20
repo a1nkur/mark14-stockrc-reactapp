@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 import { FiTrendingUp } from "react-icons/fi";
-import { motion } from "framer-motion";
 
+// Framer motion
+import { motion } from "framer-motion";
 import { OutputScreenAnimate, titleAnimate, fade } from "../animate";
 
 const ProfitScreen = ({ profit }) => {

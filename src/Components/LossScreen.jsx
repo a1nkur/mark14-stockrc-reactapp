@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 import { FiTrendingDown } from "react-icons/fi";
 
+// Framer motion
 import { motion } from "framer-motion";
-
 import { OutputScreenAnimate, titleAnimate, fade } from "../animate";
 
 const LossScreen = ({ loss }) => {

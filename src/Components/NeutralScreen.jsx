@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { BsArrowUpRight, BsArrowDownLeft } from "react-icons/bs";
 
+// Framer motion
 import { motion } from "framer-motion";
 import { genericAnimate, titleAnimate } from "../animate";
 
